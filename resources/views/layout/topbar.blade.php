@@ -16,7 +16,7 @@
                 <a class="nav-link" href="/categorias">Categorias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">GitHub</a>
+                <a class="nav-link" href="https://github.com/AlyssonBarbosa/mercado-livre" target="_blank">GitHub</a>
             </li>
         </ul>
     </div>
