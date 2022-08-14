@@ -18,6 +18,16 @@ class Site extends Model
     protected $fillable = [
         'id',
         'name',
-        'default_currency_id'
+        'default_currency_id',
+        'status',
     ];
+
+    protected $attributes = [
+        'status' => \App\Enums\StatusEnum::NONE,
+    ];
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }

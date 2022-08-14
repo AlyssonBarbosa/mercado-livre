@@ -41,6 +41,6 @@ class ProcessCategory implements ShouldQueue
     {
         $service = new CategoryBatchService();
 
-        $service->handle($this->site->id);
+        $service->handle($this->site);
     }
 }

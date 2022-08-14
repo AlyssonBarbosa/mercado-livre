@@ -21,4 +21,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/categorias/batch/{site}', [CategoryController::class, 'batchCategories'])->name('batch.categories');
 Route::resource('categorias', CategoryController::class);

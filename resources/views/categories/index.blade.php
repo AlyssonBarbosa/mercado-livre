@@ -2,7 +2,13 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-12">
-            <h1> Categorias </h1>
+
+            @include('components.error')
+            @include('components.success')
+
+            <h1>{{ $actualSite->name }} - Categorias <span class="badge bg-success">
+                    {{ $actualSite->categories()->count() }}
+                </span></h1>
 
             <select name="" id="select-site" class="form-select" aria-label="Default select example">
                 @foreach ($sites as $site)
@@ -14,11 +20,20 @@
         </div>
 
         <div class="col-12 mt-4">
-            @if (count($categories) == 0)
-                <button class="btn bg-success mb-4" id="download" data-id="{{ request('site_id', 'MLB') }}">
-                    Baixar Categorias
-                </button>
+            @if (count($categories) == 0 && $actualSite->status == 'none')
+                <form action="{{ route('batch.categories', $actualSite->id) }}" method="post">
+                    @csrf
+                    <button class="btn btn-success mb-4">
+                        Baixar Categorias
+                    </button>
+                </form>
+                <h2> Sincronize as categorias deste país </h2>
             @endif
+
+            @if ($actualSite->status == 'start')
+                <p> Estamos baixando as categorias deste país, <a href="#" id="refresh"> atualizar </a> </p>
+            @endif
+
             <div id="tree" class="bstreeview">
                 @foreach ($categories as $category)
                     <div data-loaded="false" id="{{ $category->id }}" data-level="1" data-id="{{ $category->id }}"

@@ -17,14 +17,8 @@ $(document).ready(function () {
     window.location.href = `/categorias?site_id=${val}`;
   })
 
-  $('#download').on('click', function (e) {
-    $.ajax({
-      type: "get",
-      url: `/api/categorias/batch/${$(this).data('id')}`,
-      success: function (response) {
-        console.log(response)
-      }
-    });
+  $('#refresh').on('click', function (e) {
+    location.reload(true);
   })
 
   $('#tree').on('click', '.observe-item', function (e) {

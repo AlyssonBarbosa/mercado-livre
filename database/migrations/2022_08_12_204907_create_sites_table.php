@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('id')->unique();
             $table->string('name');
             $table->string('default_currency_id');
+            $table->enum('status', ['none', 'start', 'finish'])->default('none');
         });
     }
 

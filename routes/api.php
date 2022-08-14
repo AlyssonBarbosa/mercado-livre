@@ -15,5 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/categorias/batch/{site}', [CategoryController::class, 'batchCategories']);
 Route::get('/categorias/{category}', [CategoryController::class, 'getChildrens']);

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\StatusEnum;
+use App\Models\Site;
 use App\Services\CategoryBatchService;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +17,8 @@ class BrasilCategoriesSeeder extends Seeder
     public function run()
     {
         $service = new CategoryBatchService;
-        $service->handle('MLB');
+        $site = Site::find('MLB');
+        $site->update(['status' => StatusEnum::START]);
+        $service->handle($site);
     }
 }
