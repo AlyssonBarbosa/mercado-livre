@@ -1,20 +1,52 @@
-Teste Vaga PHP Pleno
-Com este teste esperamos conhecer melhor como você desenvolve e como você se organiza para montar um sistema
+# Mercado Livre Categorias
 
-O que é o Teste ?
-Você precisa criar um sistema que consuma a API de Categorias do Mercado Livre e guarde esta informação dentro de um banco de dados. Depois criar uma tela em que eu consiga navegas entre as categorias pais e filhas.
+## _Consumindo API de Categorias_
 
-Documentação: https://developers.mercadolivre.com.br/pt_br
+## Features
 
-Informações adicionais:
-Faça da forma em que se sentir melhor, deixe sua imaginação fluir e não se preocupe tanto com o layout do sistema e sim com as funcionalidades
+-   Pagina para listar Categorias
+-   Opção de Baixar categorias de outros países
+-
 
-Você pode usar o phpMyAdmin, HeideSQL, MySQL Front e MySQL Administrator
+## Tecnologias utilizadas
 
-Seria lega se tivesse
-Docker
-Front-end usando Bootstrap
-Usar laravel ou algum outro framework em php que você tenha familiaridade
-Após finalizar o teste publique ele em seu Github e encaminhe o link do repositório para o e-mail psymics@gmail.com-/ront-end usando Bootstrap
+### Back End
 
-Um bom teste =) Esperamos ter você aqui com a gente
+-   PHP 8
+-   Laravel 9
+
+### Front End
+
+-   JS
+-   Jquery
+-   Ajax - Para fazer requisições sem recarregar a pagina!
+-   Bootstrap - Para estilizar as paginas.
+
+### Estrutura
+
+-   Docker
+-   Sail - Pacote para utilizar laravel com Docker
+
+### Banco de Dados
+
+-   MySql
+
+## Installation
+
+```sh
+./vendor/bin/sail up -d
+./vendor/bin/sail artisan key:generate
+./vendor/bin/sail artisan migrate --seed
+./vendor/bin/sail artisan queue:work --timeout=6000
+acesse http://localhost:8080
+```
+
+Verifique se a aplicação esta rodando acessando no navegador
+
+```sh
+http://localhost:8080
+```
+
+## License
+
+MIT
