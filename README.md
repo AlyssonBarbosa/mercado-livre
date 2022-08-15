@@ -38,7 +38,6 @@ copie o .env.example para .env (Já possui as chaves de acesso ao banco da image
 ./vendor/bin/sail artisan key:generate
 ./vendor/bin/sail artisan migrate --seed
 ./vendor/bin/sail artisan queue:work --timeout=6000
-acesse http://localhost:8080
 ```
 
 No env existe uma variavel chamada LIMIT_BY_CATEGORY ela é usando para limitar a quantidade de categorias que podem ser cadastradas por nivel, a API do Brasil possui mais 3 mil categorias, e isso pode demorar, então caso queira fazer os testes com menos categorias basta configurar o LIMIT_BY_CATEGORY da forma que quiser, por padrão ele vem configurado como 2.
