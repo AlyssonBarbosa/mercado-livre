@@ -14,12 +14,15 @@ class MercadoLivreService
 
     public static function get($route)
     {
-        $response = HTTP::timeout(120)->retry(3, 100)->get(self::getUrl() . $route);
 
-        if ($response->ok()) {
-            return $response->json();
+        try {
+            $response = HTTP::timeout(120)->retry(3, 100)->get(self::getUrl() . $route);
+
+            if ($response->ok()) {
+                return $response->json();
+            }
+        } catch (\Throwable $th) {
+            throw new MercadoLivreApiIsNotAvailable("A Api do mercado livre não esta disponível");
         }
-
-        throw new MercadoLivreApiIsNotAvailable("A Api do mercado livre não esta disponível");
     }
 }
