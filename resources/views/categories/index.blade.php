@@ -39,7 +39,9 @@
                     <div data-loaded="false" id="{{ $category->id }}" data-level="1" data-id="{{ $category->id }}"
                         role="treeitem" style="padding-left: 1.25rem;" class="list-group-item collapsed observe-item"
                         arial-level="1" data-bs-toggle="collapse" data-bs-target="#tree-item-{{ $category->id }}">
-                        {{ $category->name }} {{ $category->categories()->count() }}
+                        <i class="state-icon fa fa-angle-right fa-fw"></i>
+                        {{ $category->name }}
+                        {{ $category->categories()->count() }}
                     </div>
                     <div role="group" id="tree-item-{{ $category->id }}" class="list-group collapse">
                     </div>

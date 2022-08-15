@@ -2,6 +2,7 @@
 
 namespace App\Http\External;
 
+use App\Exceptions\MercadoLivreApiIsNotAvailable;
 use Illuminate\Support\Facades\Http;
 
 $url;
@@ -9,23 +10,12 @@ $token;
 
 class ConsumeApi
 {
-    public function __construct()
-    {
-
-        $this->url = env('MERCADO_LIVRE_API_URL');
-    }
-
     private static function getUrl()
     {
         return env('MERCADO_LIVRE_API_URL');
     }
 
-    private static function getToken()
-    {
-        return env('MECADO_LIVRE_ACCESS_TOKEN');
-    }
-
-    public static function get($route, $headers = null)
+    public static function get($route)
     {
         $response = HTTP::timeout(120)->retry(3, 100)->get(self::getUrl() . $route);
 
@@ -33,6 +23,6 @@ class ConsumeApi
             return $response->json();
         }
 
-        dd($response->body());
+        throw new MercadoLivreApiIsNotAvailable("A Api do mercado livre não esta disponível");
     }
 }
