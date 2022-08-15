@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\ProcessCategory;
 use App\Models\Site;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -51,11 +52,14 @@ class CategoryController extends Controller
             if ($site->status != StatusEnum::NONE) {
                 throw new BatchDownloadIsNotAvailable('Este país não esta disponivel para download em lote!');
             }
+            DB::beginTransaction();
+
             $site->update(['status' => StatusEnum::START]);
             ProcessCategory::dispatch($site);
-
+            DB::commit();
             return redirect()->back()->with('success', 'Iniciando download de categorias!');
         } catch (\Throwable $th) {
+            DB::rollBack();
             return redirect()->back()->withErrors($th->getMessage());
         }
     }

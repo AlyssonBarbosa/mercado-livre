@@ -1,9 +1,6 @@
 <?php
 
-use App\Dtos\Category\CategoryData;
 use App\Http\Controllers\Category\CategoryController;
-use App\Http\External\ConsumeApi;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*

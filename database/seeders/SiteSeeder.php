@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Http\External\ConsumeApi;
 use App\Models\Site;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Services\MercadoLivreService;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +19,7 @@ class SiteSeeder extends Seeder
         try {
             DB::beginTransaction();
 
-            $response  = ConsumeApi::get('sites');
+            $response  = MercadoLivreService::get('sites');
             Site::insert($response);
             DB::commit();
         } catch (\Throwable $th) {

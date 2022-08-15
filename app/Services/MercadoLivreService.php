@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\External;
+namespace App\Services;
 
 use App\Exceptions\MercadoLivreApiIsNotAvailable;
 use Illuminate\Support\Facades\Http;
 
-$url;
-$token;
-
-class ConsumeApi
+class MercadoLivreService
 {
     private static function getUrl()
     {

@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Enums\StatusEnum;
-use App\Http\External\ConsumeApi;
 use App\Models\Category;
 use App\Models\Site;
 
@@ -11,7 +10,7 @@ class CategoryBatchService
 {
     public function handle(Site $site)
     {
-        $response  = ConsumeApi::get("sites/$site->id/categories");
+        $response  = MercadoLivreService::get("sites/$site->id/categories");
 
         foreach ($response as $categoryData) {
             $this->saveCategoryRecursive($categoryData, $site->id);
@@ -25,7 +24,7 @@ class CategoryBatchService
         string $siteId,
         string $fatherId = null
     ) {
-        $response = ConsumeApi::get("categories/" . $categoryData['id']);
+        $response = MercadoLivreService::get("categories/" . $categoryData['id']);
 
         $category = Category::query()->updateOrCreate([
             'id' => $response['id'],
